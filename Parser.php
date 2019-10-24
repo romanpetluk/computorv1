@@ -8,7 +8,7 @@ class Parser
 {
 
     protected $rightSide;
-    public $elements;
+    protected $elements;
     public $a = 0;
     public $b = 0;
     public $c = 0;
@@ -66,6 +66,7 @@ class Parser
             if ($matches['2'] > $this->polynomialDegree) {
                 $this->polynomialDegree = $matches['2'];
             }
+//            var_dump($matches);
             switch ($matches['2']) {
                 case 0:
                     $this->c -= str_replace(' ', '', $matches['1']);

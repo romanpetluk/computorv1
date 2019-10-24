@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 
 require_once 'Parser.php';
 require_once 'Output.php';
+require_once 'Сalculate.php';
 
 //var_dump($argv);
 
@@ -13,10 +14,21 @@ require_once 'Output.php';
 
 $parser = new Parser();
 $output = new Output();
+$calculate = new Calculate;
 
 //$parser->getA($argv['1']);
 $parser->parse($argv['1']);
-$output->printReducedForm($parser);
+//var_dump($parser);
+//exit;
+//echo $parser->a . "\n";
+//echo $parser->b . "\n";
+//echo $parser->c . "\n";
+//echo $parser->polynomialDegree . "\n";
+//
+//exit;
+$output->printReducedForm($parser->a, $parser->b, $parser->c);
+$calculate->checkEquationOfDegree($parser->a, $parser->b, $parser->c);
+
 //echo $parser->polynomialDegree . "\n";
 //echo $parser->a . "\n";
 //echo $parser->b . "\n";
