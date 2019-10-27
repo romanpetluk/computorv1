@@ -12,7 +12,7 @@ class Parser
     public $a = 0;
     public $b = 0;
     public $c = 0;
-    public $polynomialDegree;
+    public $polynomialDegree = 0;
 
     public function parse($equation) {
 
