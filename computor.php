@@ -12,10 +12,12 @@ require_once 'Сalculate.php';
 
 //echo $argv['1'] * $argv['2'] . "\n";
 
+ini_set('precision', 6);
 $parser = new Parser();
 $output = new Output();
 $calculate = new Calculate;
 
+$parser->checkArg($argv, $argc);
 //$parser->getA($argv['1']);
 $parser->parse($argv['1']);
 //var_dump($parser);
@@ -23,38 +25,18 @@ $parser->parse($argv['1']);
 //echo $parser->a . "\n";
 //echo $parser->b . "\n";
 //echo $parser->c . "\n";
-echo $parser->polynomialDegree . "\n";
+$output->printReducedForm($parser->a, $parser->b, $parser->c);
+echo 'Polynomial degree: ' . $parser->polynomialDegree . "\n";
+if ($parser->polynomialDegree > 2) {
+    echo 'The polynomial degree is stricly greater than 2, I can\'t solve.' . "\n";
+    exit;
+}
 //
 //exit;
-$output->printReducedForm($parser->a, $parser->b, $parser->c);
+//$output->printReducedForm($parser->a, $parser->b, $parser->c);
 $calculate->checkEquationOfDegree($parser->a, $parser->b, $parser->c);
 
 //echo $parser->polynomialDegree . "\n";
 //echo $parser->a . "\n";
 //echo $parser->b . "\n";
 //echo $parser->c . "\n";
-
-
-
-
-
-
-/*
- * 5 * X^0 = $c
- + 4 * X^1 = $b
- - 9.3 * X^2 = $a
- = 1 * X^0
-
- 4 * X^0
- + 4 * X^1
- - 9.3 * X^2
- = 0
-
-//A = X^2
-//B = X^1
-//C = X^0
-
-(6 * C) (+ 4 * B) (- 9.3 * A) = (1 * C)
-5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^2
-
-*/

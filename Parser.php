@@ -24,6 +24,17 @@ class Parser
         $this->reduceEquation();
     }
 
+    public function checkArg($av, $ac) {
+        if ($ac != 2) {
+            exit('error');
+        }
+
+        $strAv = $av['1'];
+
+//        $pattern = ''
+//        preg_split()
+    }
+
     protected function splitEquation($equation) {
         $pattern = '#^(.*)=(.*)$#';
         preg_match($pattern, $equation, $elemnts);
